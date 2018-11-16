@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const { user } = require('./models/User')
-
+const { article } = require('./models/Article')
 const db = new Sequelize({
     dialect: 'mysql',
     host: 'localhost',
@@ -11,6 +11,9 @@ const db = new Sequelize({
 })
 
 const User = db.define('user', user)
+const Article = db.define('article', article)
+
+Article.belongsTo(User, {foreignKey: 'userId'})
 
 User.prototype.getUsername = function() {
     console.log(this.username);
@@ -18,5 +21,6 @@ User.prototype.getUsername = function() {
 
 module.exports = {
     db,
-    User
+    User,
+    Article
 }
