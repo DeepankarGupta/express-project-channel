@@ -24,5 +24,17 @@ module.exports = {
             type: DT.BIGINT,
             defaultValue: 0
         }
+    },
+    getArticleResponse: function () {
+        return {
+            slug: this.slug,
+            title: this.title,
+            description: this.description,
+            body: this.body,
+            favoritesCount: this.favoritesCount,
+            createdAt: this.createdAt,
+            updatedAt: this.updatedAt,
+            author: this.user.getProfileResponse()
+        }
     }
 }

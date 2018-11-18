@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const { user } = require('./models/User')
-const { article } = require('./models/Article')
+const { user, getProfileResponse } = require('./models/User')
+const { article, getArticleResponse } = require('./models/Article')
 const db = new Sequelize({
     dialect: 'mysql',
     host: 'localhost',
@@ -11,9 +11,11 @@ const db = new Sequelize({
 })
 
 const User = db.define('user', user)
+User.prototype.getProfileResponse = getProfileResponse
 const Article = db.define('article', article)
+Article.prototype.getArticleResponse = getArticleResponse
 
-Article.belongsTo(User, {foreignKey: 'userId'})
+Article.belongsTo(User)
 
 User.prototype.getUsername = function() {
     console.log(this.username);

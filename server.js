@@ -9,7 +9,7 @@ app.use(express.json())
 app.use('/user', require('./routes/users'))
 app.use('/articles', require('./routes/articles'))
 
-db.sync()
+db.sync(/* {force: true} */)
     .then(() => {
         app.listen(9999, () => {
             console.log('Server started http://localhost:9999')

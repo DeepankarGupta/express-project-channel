@@ -20,5 +20,11 @@ module.exports = {
             type: DT.STRING(50),
             allowNull: false
           }
+    },
+    getProfileResponse: function() {
+      return {
+        username:this.username,
+        bio:this.bio,
+      }
     }
 }
