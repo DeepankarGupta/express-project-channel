@@ -72,4 +72,24 @@ route.get('/', async (req, res) => {
     }
 })
 
+//get your feed
+route.get('/feed', authorization ,async (req, res) => {
+    try {
+        let user = await User.findByPk(req.userId)
+        let folowees = await user.getFollowees()
+        let foloweesId = []
+        for(let i=0; i<folowees.length; i++) {
+            let id = folowees[i].id
+            foloweesId.push(id)
+        }
+        let articles = await Article.findAll({ where: { 
+            userId: foloweesId
+        }})
+        res.status(200).json(articles)
+    } catch (err) {
+        console.log(err)
+        res.status(400).json(err)
+    }
+})
+
 module.exports = route

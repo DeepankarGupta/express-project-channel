@@ -8,6 +8,7 @@ app.use(express.json())
 
 app.use('/user', require('./routes/users'))
 app.use('/articles', require('./routes/articles'))
+app.use('/profile', require('./routes/profile'))
 
 db.sync(/* {force: true} */)
     .then(() => {
