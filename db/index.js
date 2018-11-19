@@ -11,15 +11,14 @@ const db = new Sequelize({
 })
 
 const User = db.define('user', user)
-User.prototype.getProfileResponse = getProfileResponse
 const Article = db.define('article', article)
+
+User.prototype.getProfileResponse = getProfileResponse
 Article.prototype.getArticleResponse = getArticleResponse
 
 Article.belongsTo(User)
-
-User.prototype.getUsername = function() {
-    console.log(this.username);
-}
+User.hasMany(Article)
+User.belongsToMany(User, {as: 'followees', through:'follow'})
 
 module.exports = {
     db,
