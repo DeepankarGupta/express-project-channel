@@ -107,7 +107,7 @@ route.get('/feed', authorization, async (req, res) => {
     }
 })
 
-
+//get a particular article
 route.get('/:slug', async (req, res) => {
     try {
         let newArticle = await Article.findOne({
@@ -124,6 +124,7 @@ route.get('/:slug', async (req, res) => {
     }
 })
 
+//update a particular article
 route.put('/:slug', authorization, async (req, res) => {
     try {
         let article = await Article.findOne({
@@ -146,6 +147,7 @@ route.put('/:slug', authorization, async (req, res) => {
     }
 })
 
+//delete a particular article
 route.delete('/:slug', authorization, async (req, res) => {
     try {
         let article = await Article.findOne({
