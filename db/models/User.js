@@ -24,7 +24,14 @@ module.exports = {
     getProfileResponse: function() {
       return {
         username:this.username,
-        bio:this.bio,
+        bio:this.bio
+      }
+    },
+    getRegistrationResponse: function() {
+      return {
+        email: this.email,
+        username: this.username,
+        bio: this.bio
       }
     }
 }

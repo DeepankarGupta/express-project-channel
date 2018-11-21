@@ -8,9 +8,12 @@ route.post('/register', async (req,res) => {
     const user = req.body.user
     try {
         const newUser = await User.create(user)
-        res.status(201).json(newUser)
+        res.status(201).json({
+            user: newUser.getRegistrationResponse()
+        })
     } catch(e) {
-        res.status(409).json(e.errors[0].message)
+        console.log(e);
+        res.status(409).json(e)
     }
 })
 

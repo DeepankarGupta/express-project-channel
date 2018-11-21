@@ -54,7 +54,7 @@ route.post('/:slug/comments', authorization, async (req, res) => {
                 slug: req.params.slug
             }
         })
-        let newComment = await Comment.create({
+        let newComment   = await Comment.create({
             body: req.body.comment.body,
             articleId: article.id,
             userId: req.userId

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const { user, getProfileResponse } = require('./models/User')
+const { user, getProfileResponse, getRegistrationResponse } = require('./models/User')
 const { article, getArticleResponse } = require('./models/Article')
 const { comment, getCommentResponse } = require('./models/Comment')
 const db = new Sequelize({
@@ -16,6 +16,7 @@ const Article = db.define('article', article)
 const Comment = db.define('comment', comment)
 
 User.prototype.getProfileResponse = getProfileResponse
+User.prototype.getRegistrationResponse = getRegistrationResponse
 Article.prototype.getArticleResponse = getArticleResponse
 Comment.prototype.getCommentResponse = getCommentResponse
 
